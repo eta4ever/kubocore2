@@ -372,6 +372,8 @@ module coupling(){
 	}//d
 }//m
 		
+coupling();
+
 // воздуховод бловера
 module blower_duct(){
 	color([0,0.9,0]) difference(){
@@ -524,7 +526,7 @@ difference(){
 }//m
 
 
-head_base();
+//head_base();
 
 module head(){
 	difference(){
