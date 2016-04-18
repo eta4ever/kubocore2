@@ -372,7 +372,7 @@ module coupling(){
 	}//d
 }//m
 		
-coupling();
+//coupling();
 
 // воздуховод бловера
 module blower_duct(){
@@ -433,6 +433,8 @@ module z_bearing(){
 	}//d
 	translate([0,0,-22.5]) lm12luu();
 }//m
+
+//z_bearing();
 
 //-------------XY---------------
 module xy(){
