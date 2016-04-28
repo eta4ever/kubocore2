@@ -1,0 +1,187 @@
+# Base config
+
+default_feed_rate	3600
+default_seek_rate	3600
+mm_per_arc_segment	0.5
+
+arm_solution corexy
+
+alpha_steps_per_mm	80 // 1/16 GT2
+beta_steps_per_mm	80
+gamma_steps_per_mm	400 // tr8x8
+
+planner_queue_size	32 // don't touch
+
+acceleration	2000
+z_acceleration	60
+acceleration_ticks_per_second 1000
+junction_deviation	0.02
+
+# Stepper module configuration
+
+microseconds_per_step_pulse	1
+base_stepping_frequency	100000
+
+# Cartesian axis speed limits
+x_axis_max_speed	30000
+y_axis_max_speed    30000
+z_axis_max_speed    100
+
+# Stepper module pins
+alpha_step_pin	2.0
+alpha_dir_pin	0.5
+alpha_en_pin	0.4
+alpha_current   1.0
+alpha_max_rate  30000
+
+beta_step_pin	2.1
+beta_dir_pin	0.11
+beta_en_pin		0.10
+beta_current    1.0
+beta_max_rate   30000
+
+gamma_step_pin	2.2
+gamma_dir_pin	0.20
+gamma_en_pin	0.19
+gamma_current	1.0
+gamma_max_rate  100
+
+# Serial communications configuration
+uart0.baud_rate	115200
+second_usb_serial_enable	true
+
+# Extruder module configuration
+
+extruder.hotend.enable	true
+extruder.hotend.steps_per_mm	100
+extruder.hotend.default_feed_rate	600
+extruder.hotend.acceleration	1000
+extruder.hotend.max_speed	100
+
+extruder.hotend.step_pin 	2.3
+extruder.hotend.dir_pin 	0.22
+extruder.hotend.en_pin 		0.21
+
+delta_current	1.0
+
+# Hotend
+temperature_control.hotend.enable 	true
+temperature_control.hotend.thermistor_pin    0.24
+temperature_control.hotend.heater_pin        2.7
+temperature_control.hotend.thermistor        RRRF100K
+temperature_control.hotend.set_m_code        104
+temperature_control.hotend.set_and_wait_m_code 109
+temperature_control.hotend.designator        T
+
+temperature_control.bed.enable               true
+temperature_control.bed.thermistor_pin       0.23
+temperature_control.bed.heater_pin           2.5
+temperature_control.bed.thermistor           RRRF100K
+
+temperature_control.bed.set_m_code           140
+temperature_control.bed.set_and_wait_m_code  190
+temperature_control.bed.designator           B
+
+# Switch module for fan control
+switch.fan.enable                            true             #
+switch.fan.input_on_command                  M106             #
+switch.fan.input_off_command                 M107             #
+switch.fan.output_pin                        2.4              #
+switch.fan.output_type                       pwm              # pwm output settable with S parameter in the input_on_comand
+#switch.fan.max_pwm                          255              # set max pwm for the pin default is 255
+
+# Endstops
+endstops_enable                              true
+corexy_homing                                true
+alpha_min_endstop                            1.24^
+alpha_max_endstop                            nc
+alpha_homing_direction                       home_to_min
+alpha_min                                    0
+alpha_max                                    190
+beta_min_endstop                             1.26^
+beta_max_endstop                             nc
+beta_homing_direction                        home_to_min
+beta_min                                     0
+beta_max                                     190
+gamma_min_endstop                            1.28^
+gamma_max_endstop                            nc
+gamma_homing_direction                       home_to_min
+gamma_min                                    0
+gamma_max                                    190
+
+alpha_fast_homing_rate_mm_s                  50               # feedrates in mm/second
+beta_fast_homing_rate_mm_s                   50               # "
+gamma_fast_homing_rate_mm_s                  4                # "
+alpha_slow_homing_rate_mm_s                  25               # "
+beta_slow_homing_rate_mm_s                   25               # "
+gamma_slow_homing_rate_mm_s                  2                # "
+
+alpha_homing_retract_mm                      5                # distance in mm
+beta_homing_retract_mm                       5                # "
+gamma_homing_retract_mm                      1                # "
+
+#endstop_debounce_count                       100              # uncomment if you get noise on your endstops, default is 100
+
+# Panel
+panel.enable                                  false             # set to true to enable the panel code
+#panel.lcd                                    smoothiepanel     # set type of panel
+#panel.encoder_a_pin                          3.25!^            # encoder pin
+#panel.encoder_b_pin                          3.26!^            # encoder pin
+
+# Example for reprap discount GLCD
+# on glcd EXP1 is to left and EXP2 is to right, pin 1 is bottom left, pin 2 is top left etc.
+# +5v is EXP1 pin 10, Gnd is EXP1 pin 9
+panel.lcd                                   reprap_discount_glcd     #
+panel.spi_channel                           0                 # spi channel to use  ; GLCD EXP1 Pins 3,5 (MOSI, SCLK)
+panel.spi_cs_pin                            0.16              # spi chip select     ; GLCD EXP1 Pin 4
+panel.encoder_a_pin                         3.25!^            # encoder pin         ; GLCD EXP2 Pin 3
+panel.encoder_b_pin                         3.26!^            # encoder pin         ; GLCD EXP2 Pin 5
+panel.click_button_pin                      1.30!^            # click button        ; GLCD EXP1 Pin 2
+panel.buzz_pin                              1.31              # pin for buzzer      ; GLCD EXP1 Pin 1
+panel.back_button_pin                       2.11!^            # back button         ; GLCD EXP2 Pin 8
+panel.external_sd                     true              # set to true if there is an extrernal sdcard on the panel
+panel.external_sd.spi_channel         1                 # set spi channel the sdcard is on
+panel.external_sd.spi_cs_pin          0.28              # set spi chip select for the sdcard (or any spare pin)
+panel.external_sd.sdcd_pin            0.27!^            # sd detect signal (set to nc if no sdcard detect) (or any spare pin)
+
+# pins used with other panels
+#panel.up_button_pin                         0.1!              # up button if used
+#panel.down_button_pin                       0.0!              # down button if used
+#panel.click_button_pin                      0.18!             # click button if used
+
+panel.menu_offset                            0                 # some panels will need 1 here
+
+panel.alpha_jog_feedrate                     6000              # x jogging feedrate in mm/min
+panel.beta_jog_feedrate                      6000              # y jogging feedrate in mm/min
+panel.gamma_jog_feedrate                     200               # z jogging feedrate in mm/min
+
+panel.hotend_temperature                     185               # temp to set hotend when preheat is selected
+panel.bed_temperature                        60                # temp to set bed when preheat is selected
+
+# Example of a custom menu entry, which will show up in the Custom entry.
+# NOTE _ gets converted to space in the menu and commands, | is used to separate multiple commands
+custom_menu.power_on.enable                true
+custom_menu.power_on.name                  Power_on
+custom_menu.power_on.command               M80
+
+custom_menu.power_off.enable               true
+custom_menu.power_off.name                 Power_off
+custom_menu.power_off.command              M81
+
+# Only needed on a smoothieboard
+currentcontrol_module_enable                  true
+
+
+return_error_on_unhandled_gcode              false
+
+# network settings
+network.enable                               true            # enable the ethernet network services
+network.webserver.enable                     true             # enable the webserver
+network.telnet.enable                        true             # enable the telnet server
+network.ip_address                           auto             # use dhcp to get ip address
+
+# uncomment the 3 below to manually setup ip address
+#network.ip_address                           192.168.3.221    # the IP address
+#network.ip_mask                              255.255.255.0    # the ip mask
+#network.ip_gateway                           192.168.3.1      # the gateway address
+#network.mac_override                         xx.xx.xx.xx.xx.xx  # override the mac address, only do this if you have a conflict
