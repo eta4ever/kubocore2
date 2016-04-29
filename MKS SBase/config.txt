@@ -123,18 +123,13 @@ gamma_homing_retract_mm                      1                # "
 #endstop_debounce_count                       100              # uncomment if you get noise on your endstops, default is 100
 
 # Panel
-panel.enable                                  false             # set to true to enable the panel code
-#panel.lcd                                    smoothiepanel     # set type of panel
-#panel.encoder_a_pin                          3.25!^            # encoder pin
-#panel.encoder_b_pin                          3.26!^            # encoder pin
+panel.enable                                  true             # set to true to enable the panel code
 
-# Example for reprap discount GLCD
-# on glcd EXP1 is to left and EXP2 is to right, pin 1 is bottom left, pin 2 is top left etc.
-# +5v is EXP1 pin 10, Gnd is EXP1 pin 9
+# fullgraphic
 panel.lcd                                   reprap_discount_glcd     #
 panel.spi_channel                           0                 # spi channel to use  ; GLCD EXP1 Pins 3,5 (MOSI, SCLK)
 panel.spi_cs_pin                            0.16              # spi chip select     ; GLCD EXP1 Pin 4
-panel.encoder_a_pin                         3.25!^            # encoder pin         ; GLCD EXP2 Pin 3
+panel.encoder_a_pin                         3.25!^            # encoder pin         ; GLCD EXP2 Pin 3  
 panel.encoder_b_pin                         3.26!^            # encoder pin         ; GLCD EXP2 Pin 5
 panel.click_button_pin                      1.30!^            # click button        ; GLCD EXP1 Pin 2
 panel.buzz_pin                              1.31              # pin for buzzer      ; GLCD EXP1 Pin 1
@@ -144,10 +139,7 @@ panel.external_sd.spi_channel         1                 # set spi channel the sd
 panel.external_sd.spi_cs_pin          0.28              # set spi chip select for the sdcard (or any spare pin)
 panel.external_sd.sdcd_pin            0.27!^            # sd detect signal (set to nc if no sdcard detect) (or any spare pin)
 
-# pins used with other panels
-#panel.up_button_pin                         0.1!              # up button if used
-#panel.down_button_pin                       0.0!              # down button if used
-#panel.click_button_pin                      0.18!             # click button if used
+panel.encoder_resolution                    4	# don't know default, with no parameters skips 
 
 panel.menu_offset                            0                 # some panels will need 1 here
 
@@ -155,7 +147,7 @@ panel.alpha_jog_feedrate                     6000              # x jogging feedr
 panel.beta_jog_feedrate                      6000              # y jogging feedrate in mm/min
 panel.gamma_jog_feedrate                     200               # z jogging feedrate in mm/min
 
-panel.hotend_temperature                     185               # temp to set hotend when preheat is selected
+panel.hotend_temperature                     200               # temp to set hotend when preheat is selected
 panel.bed_temperature                        60                # temp to set bed when preheat is selected
 
 # Example of a custom menu entry, which will show up in the Custom entry.
@@ -178,10 +170,10 @@ return_error_on_unhandled_gcode              false
 network.enable                               true            # enable the ethernet network services
 network.webserver.enable                     true             # enable the webserver
 network.telnet.enable                        true             # enable the telnet server
-network.ip_address                           auto             # use dhcp to get ip address
+#network.ip_address                           auto             # use dhcp to get ip address
 
 # uncomment the 3 below to manually setup ip address
-#network.ip_address                           192.168.3.221    # the IP address
-#network.ip_mask                              255.255.255.0    # the ip mask
-#network.ip_gateway                           192.168.3.1      # the gateway address
+network.ip_address                           192.168.0.189    # the IP address
+network.ip_mask                              255.255.255.0    # the ip mask
+network.ip_gateway                           192.168.0.105      # the gateway address
 #network.mac_override                         xx.xx.xx.xx.xx.xx  # override the mac address, only do this if you have a conflict
