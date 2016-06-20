@@ -6,9 +6,13 @@ mm_per_arc_segment	0.5
 
 arm_solution corexy
 
-alpha_steps_per_mm	80 // 1/16 GT2
-beta_steps_per_mm	80
-gamma_steps_per_mm	400 // tr8x8
+//alpha_steps_per_mm	80 // 1/16 GT2
+//beta_steps_per_mm	80
+//gamma_steps_per_mm	400 // tr8x8
+
+alpha_steps_per_mm	160 // 1/32 GT2
+beta_steps_per_mm	160
+gamma_steps_per_mm	800 // tr8x8
 
 planner_queue_size	32 // don't touch
 
@@ -53,7 +57,8 @@ second_usb_serial_enable	true
 # Extruder module configuration
 
 extruder.hotend.enable	true
-extruder.hotend.steps_per_mm	100
+//extruder.hotend.steps_per_mm	100
+extruder.hotend.steps_per_mm	200
 extruder.hotend.default_feed_rate	600
 extruder.hotend.acceleration	1000
 extruder.hotend.max_speed	100
